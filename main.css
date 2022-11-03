@@ -9,7 +9,7 @@ section {
   min-height: 100vh;
 }
 
-.animated-bg {
+.hue-animated-bg {
   --width-circ-blue: calc(800px * 2);
   --width-circ-pink: calc(1300px * 2);
   --width-circ-pink-light: calc(800px * 2);
@@ -26,7 +26,7 @@ section {
 }
 
 @media only screen and (max-width: 1920px) {
-  .animated-bg {
+  .hue-animated-bg {
     --width-circ-blue: 800px;
     --width-circ-pink: 1300px;
     --width-circ-pink-light: 800px;
@@ -34,7 +34,7 @@ section {
 }
 
 @media only screen and (max-width: 768px) {
-  .animated-bg {
+  .hue-animated-bg {
     --width-circ-blue: calc(800px / 1.5);
     --width-circ-pink: calc(1300px / 1.5);
     --width-circ-pink-light: calc(800px / 1.5);
@@ -51,9 +51,12 @@ section {
   height: var(--width-circ-blue);
   border-radius: 50%;
   background-color: #0028f9;
+  -webkit-filter: blur(calc(var(--width-circ-blue) / 2.5));
   filter: blur(calc(var(--width-circ-blue) / 2.5));
   left: calc(var(--width-circ-blue) / -2);
   bottom: calc(var(--width-circ-blue) / -2);
+  -webkit-animation: animate-blue-circle var(--duration-blue-circle) linear 0s
+    infinite alternate;
   animation: animate-blue-circle var(--duration-blue-circle) linear 0s infinite
     alternate;
 }
@@ -65,17 +68,40 @@ section {
   }
 }
 
-@keyframes animate-blue-circle {
+@-webkit-keyframes animate-blue-circle {
   0% {
+    -webkit-transform: translate(0, 0) scale(1);
     transform: translate(0, 0) scale(1);
   }
 
   50% {
+    -webkit-transform: translate(calc(100% + (var(--width-circ-blue) / 2)), 20%)
+      scale(1.1);
     transform: translate(calc(100% + (var(--width-circ-blue) / 2)), 20%)
       scale(1.1);
   }
 
   100% {
+    -webkit-transform: translate(0, 0) scale(1);
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes animate-blue-circle {
+  0% {
+    -webkit-transform: translate(0, 0) scale(1);
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    -webkit-transform: translate(calc(100% + (var(--width-circ-blue) / 2)), 20%)
+      scale(1.1);
+    transform: translate(calc(100% + (var(--width-circ-blue) / 2)), 20%)
+      scale(1.1);
+  }
+
+  100% {
+    -webkit-transform: translate(0, 0) scale(1);
     transform: translate(0, 0) scale(1);
   }
 }
@@ -85,9 +111,12 @@ section {
   height: var(--width-circ-pink);
   border-radius: 50%;
   background-color: #f9a7fc;
+  -webkit-filter: blur(calc(var(--width-circ-pink) / 1));
   filter: blur(calc(var(--width-circ-pink) / 1));
   left: calc(var(--width-circ-pink) / -2);
   top: calc(var(--width-circ-pink) / -1.5);
+  -webkit-animation: animate-pink-circle var(--duration-pink-circle) linear 0s
+    infinite alternate;
   animation: animate-pink-circle var(--duration-pink-circle) linear 0s infinite
     alternate;
 }
@@ -98,16 +127,36 @@ section {
   }
 }
 
-@keyframes animate-pink-circle {
+@-webkit-keyframes animate-pink-circle {
   0% {
+    -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
   }
 
   50% {
+    -webkit-transform: translate(calc(100% + var(--width-circ-pink)), 15%);
     transform: translate(calc(100% + var(--width-circ-pink)), 15%);
   }
 
   100% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes animate-pink-circle {
+  0% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  50% {
+    -webkit-transform: translate(calc(100% + var(--width-circ-pink)), 15%);
+    transform: translate(calc(100% + var(--width-circ-pink)), 15%);
+  }
+
+  100% {
+    -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
   }
 }
@@ -117,9 +166,12 @@ section {
   height: var(--width-circ-pink-light);
   border-radius: 50%;
   background-color: #fd91e4;
+  -webkit-filter: blur(calc(var(--width-circ-pink-light) / 2.5));
   filter: blur(calc(var(--width-circ-pink-light) / 2.5));
   top: calc(var(--width-circ-pink-light) / -2);
   left: calc(var(--width-circ-pink-light) / 4);
+  -webkit-animation: animate-pink-light-circle var(--duration-pink-light-circle)
+    linear 0s infinite alternate;
   animation: animate-pink-light-circle var(--duration-pink-light-circle) linear
     0s infinite alternate;
 }
@@ -127,35 +179,77 @@ section {
 @media only screen and (max-width: 768px) {
   .circle-pink-light {
     top: 0;
+    -webkit-animation: animate-pink-light-circle-mobile
+      var(--duration-pink-light-circle) linear 0s infinite alternate;
     animation: animate-pink-light-circle-mobile
       var(--duration-pink-light-circle) linear 0s infinite alternate;
   }
 }
 
-@keyframes animate-pink-light-circle-mobile {
+@-webkit-keyframes animate-pink-light-circle-mobile {
   0% {
+    -webkit-transform: translate(0, 0) scale(1);
     transform: translate(0, 0) scale(1);
   }
 
   50% {
+    -webkit-transform: translate(-100%, 15%) scale(2.5);
     transform: translate(-100%, 15%) scale(2.5);
   }
 
   100% {
+    -webkit-transform: translate(0, 0) scale(1);
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes animate-pink-light-circle-mobile {
+  0% {
+    -webkit-transform: translate(0, 0) scale(1);
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    -webkit-transform: translate(-100%, 15%) scale(2.5);
+    transform: translate(-100%, 15%) scale(2.5);
+  }
+
+  100% {
+    -webkit-transform: translate(0, 0) scale(1);
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@-webkit-keyframes animate-pink-light-circle {
+  0% {
+    -webkit-transform: translate(0, 0) scale(1);
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    -webkit-transform: translate(-100%, 15%) scale(1.2);
+    transform: translate(-100%, 15%) scale(1.2);
+  }
+
+  100% {
+    -webkit-transform: translate(0, 0) scale(1);
     transform: translate(0, 0) scale(1);
   }
 }
 
 @keyframes animate-pink-light-circle {
   0% {
+    -webkit-transform: translate(0, 0) scale(1);
     transform: translate(0, 0) scale(1);
   }
 
   50% {
+    -webkit-transform: translate(-100%, 15%) scale(1.2);
     transform: translate(-100%, 15%) scale(1.2);
   }
 
   100% {
+    -webkit-transform: translate(0, 0) scale(1);
     transform: translate(0, 0) scale(1);
   }
 }
